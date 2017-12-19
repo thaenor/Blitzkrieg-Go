@@ -1,0 +1,93 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#CCCCCC" currentTimeline="1" xflVersion="2.8" creatorInfo="Adobe Animate CC" platform="Macintosh" versionInfo="Saved by Animate Macintosh 16.0 build 119" majorVersion="16" buildNumber="119" guidesSnapTo="false" bitmapSnap="false" snapAlign="false" objectsSnapTo="false" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="3CE50BB6-55CF-47A6-B591-01286DDDC64C">
+     <symbols>
+          <Include href="Map.xml" itemID="5a36e2ec-000002b0" lastModified="1513546484"/>
+          <Include href="Player1.xml" itemID="5a36e311-000002b5" lastModified="1513547181"/>
+          <Include href="Player2.xml" itemID="5a36e33a-000002bc" lastModified="1513547184"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Actions" color="#9933CC" current="true" isSelected="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Framescript language="JavaScript">
+                                        <script><![CDATA[var c, w, h, p1, p2;
+
+function init() {
+	console.log(stage)
+    c = createjs;
+    w = stage.canvas.clientWidth; //change for retina display
+    h = stage.canvas.clientHeight; //change for retina display
+
+    buildBackground();
+    game = new c.Container();
+    stage.addChild(game);
+
+    c.Ticker.on("tick", gameLoop);
+}
+
+function gameLoop(e) {
+    console.log("game loop")
+}
+
+function buildBackground() {
+    backGround = new c.Container();
+    var map = new lib.Map();
+	p1 = new lib.P1();
+	p2 = new lib.P2();
+    backGround.addChild(map);
+	backGround.addChild(p1);
+	backGround.addChild(p2);
+    stage.addChild(backGround);
+	map.x = 0;
+	map.y = 0;
+	p1.x = 77;
+	p1.y = 284;
+	p2.x = 453;
+	p2.y = 145;
+}
+
+init();]]></script>
+                                   </Framescript>
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="Map">
+                                             <transformationPoint>
+                                                  <Point x="275" y="200"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="Player1">
+                                             <matrix>
+                                                  <Matrix tx="77.95" ty="284.25"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="Player2">
+                                             <matrix>
+                                                  <Matrix tx="453.05" ty="145.35"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Sketch" color="#4F80FF" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <persistentData>
+          <PD n="CreateJSToolkit_timelinedata" v="version&#xA;0.1&#xA;loop&#xA;true"/>
+     </persistentData>
+     <PrinterSettings platform="macintosh"/>
+     <publishHistory/>
+</DOMDocument>
