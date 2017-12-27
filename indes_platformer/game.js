@@ -77,7 +77,7 @@ var assetLoader = (function() {
   this.sounds      = {
     'bg'            : 'sounds/Blitzkreig_Bop.mp3',
     'jump'          : 'sounds/jump.mp3',
-    'gameOver'      : 'sounds/gameOver.mp3'
+    'gameOver'      : 'sounds/gameOver2.mp3'
   };
 
   var assetsLoaded = 0;                                // how many assets have been loaded
