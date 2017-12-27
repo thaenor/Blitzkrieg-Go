@@ -55,10 +55,10 @@ a {
   background-color: grey;
 }
 #menu.main {
-  background-image: url('imgs/menu-bg.png');
+  background-image: url('assets/menu-bg.png');
 }
 #menu.credits {
-  background-image: url('imgs/credits-bg.png');
+  background-image: url('assets/credits-bg.png');
 }
 
 #progress {
@@ -87,11 +87,11 @@ a {
   z-index: 3;
 }
 .sound-on {
-  background-image: url('imgs/soundOn.png');
+  background-image: url('assets/soundOn.png');
   background-repeat: no-repeat;
 }
 .sound-off {
-  background-image: url('imgs/soundOff.png');
+  background-image: url('assets/soundOff.png');
   background-repeat: no-repeat;
 }
 

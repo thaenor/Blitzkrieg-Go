@@ -50,41 +50,41 @@ function bound(num, low, high) {
  */
 var assetLoader = (function() {
   // images dictionary
-  this.imgs        = {
-    'bg'            : 'imgs/background.jpg',
-    'sky'           : 'imgs/sky.png',
-    'backdrop'      : 'imgs/backdrop.png',
-    'backdrop2'     : 'imgs/backdrop_ground.png',
-    'grass'         : 'imgs/grass.png',
-    'avatar_normal' : 'imgs/character.png',
-    'water'         : 'imgs/water.png',
-    'grass1'        : 'imgs/grassMid1.png',
-    'grass2'        : 'imgs/grassMid2.png',
-    'bridge'        : 'imgs/bridge.png',
-    'plant'         : 'imgs/plant.png',
-    'bush1'         : 'imgs/bush1.png',
-    'bush2'         : 'imgs/bush2.png',
-    'cliff'         : 'imgs/grassCliffRight.png',
-    'spikes'        : 'imgs/spikes.png',
-    'box'           : 'imgs/boxCoin.png',
-    'slime'         : 'imgs/slime.png'
+  this.assets        = {
+    'bg'            : 'assets/background.jpg',
+    'sky'           : 'assets/sky.png',
+    'backdrop'      : 'assets/backdrop.png',
+    'backdrop2'     : 'assets/backdrop_ground.png',
+    'grass'         : 'assets/grass.png',
+    'avatar_normal' : 'assets/character.png',
+    'water'         : 'assets/water.png',
+    'grass1'        : 'assets/grassMid1.png',
+    'grass2'        : 'assets/grassMid2.png',
+    'bridge'        : 'assets/bridge.png',
+    'plant'         : 'assets/plant.png',
+    'bush1'         : 'assets/bush1.png',
+    'bush2'         : 'assets/bush2.png',
+    'cliff'         : 'assets/grassCliffRight.png',
+    'spikes'        : 'assets/spikes.png',
+    'box'           : 'assets/boxCoin.png',
+    'slime'         : 'assets/slime.png'
   };
 
   // sounds dictionary
   this.sounds      = {
-    'bg'            : 'sounds/bg.mp3',
+    'bg'            : 'sounds/Blitzkreig_Bop.mp3',
     'jump'          : 'sounds/jump.mp3',
     'gameOver'      : 'sounds/gameOver.mp3'
   };
 
   var assetsLoaded = 0;                                // how many assets have been loaded
-  var numImgs      = Object.keys(this.imgs).length;    // total number of image assets
+  var numAssets      = Object.keys(this.assets).length;    // total number of image assets
   var numSounds    = Object.keys(this.sounds).length;  // total number of sound assets
-  this.totalAssest = numImgs;                          // total number of assets
+  this.totalAssest = numAssets;                          // total number of assets
 
   /**
    * Ensure all assets are loaded before using them
-   * @param {number} dic  - Dictionary name ('imgs', 'sounds', 'fonts')
+   * @param {number} dic  - Dictionary name ('assets', 'sounds', 'fonts')
    * @param {number} name - Asset name in the dictionary
    */
   function assetLoaded(dic, name) {
@@ -125,18 +125,18 @@ var assetLoader = (function() {
     var src;
 
     // load images
-    for (var img in this.imgs) {
-      if (this.imgs.hasOwnProperty(img)) {
-        src = this.imgs[img];
+    for (var asset in this.assets) {
+      if (this.assets.hasOwnProperty(asset)) {
+        src = this.assets[asset];
 
         // create a closure for event binding
-        (function(_this, img) {
-          _this.imgs[img] = new Image();
-          _this.imgs[img].status = 'loading';
-          _this.imgs[img].name = img;
-          _this.imgs[img].onload = function() { assetLoaded.call(_this, 'imgs', img) };
-          _this.imgs[img].src = src;
-        })(_this, img);
+        (function(_this, asset) {
+          _this.assets[asset] = new Image();
+          _this.assets[asset].status = 'loading';
+          _this.assets[asset].name = asset;
+          _this.assets[asset].onload = function() { assetLoaded.call(_this, 'assets', asset) };
+          _this.assets[asset].src = src;
+        })(_this, asset);
       }
     }
 
@@ -162,7 +162,7 @@ var assetLoader = (function() {
   }
 
   return {
-    imgs: this.imgs,
+    assets: this.assets,
     sounds: this.sounds,
     totalAssest: this.totalAssest,
     downloadAll: this.downloadAll
@@ -268,7 +268,7 @@ var background = (function() {
    * Draw the backgrounds to the screen at different speeds
    */
   this.draw = function() {
-    ctx.drawImage(assetLoader.imgs.bg, 0, 0);
+    ctx.drawImage(assetLoader.assets.bg, 0, 0);
 
     // Pan background
     sky.x -= sky.speed;
@@ -276,21 +276,21 @@ var background = (function() {
     backdrop2.x -= backdrop2.speed;
 
     // draw images side by side to loop
-    ctx.drawImage(assetLoader.imgs.sky, sky.x, sky.y);
-    ctx.drawImage(assetLoader.imgs.sky, sky.x + canvas.width, sky.y);
+    ctx.drawImage(assetLoader.assets.sky, sky.x, sky.y);
+    ctx.drawImage(assetLoader.assets.sky, sky.x + canvas.width, sky.y);
 
-    ctx.drawImage(assetLoader.imgs.backdrop, backdrop.x, backdrop.y);
-    ctx.drawImage(assetLoader.imgs.backdrop, backdrop.x + canvas.width, backdrop.y);
+    ctx.drawImage(assetLoader.assets.backdrop, backdrop.x, backdrop.y);
+    ctx.drawImage(assetLoader.assets.backdrop, backdrop.x + canvas.width, backdrop.y);
 
-    ctx.drawImage(assetLoader.imgs.backdrop2, backdrop2.x, backdrop2.y);
-    ctx.drawImage(assetLoader.imgs.backdrop2, backdrop2.x + canvas.width, backdrop2.y);
+    ctx.drawImage(assetLoader.assets.backdrop2, backdrop2.x, backdrop2.y);
+    ctx.drawImage(assetLoader.assets.backdrop2, backdrop2.x + canvas.width, backdrop2.y);
 
     // If the image scrolled off the screen, reset
-    if (sky.x + assetLoader.imgs.sky.width <= 0)
+    if (sky.x + assetLoader.assets.sky.width <= 0)
       sky.x = 0;
-    if (backdrop.x + assetLoader.imgs.backdrop.width <= 0)
+    if (backdrop.x + assetLoader.assets.backdrop.width <= 0)
       backdrop.x = 0;
-    if (backdrop2.x + assetLoader.imgs.backdrop2.width <= 0)
+    if (backdrop2.x + assetLoader.assets.backdrop2.width <= 0)
       backdrop2.x = 0;
   };
 
@@ -388,7 +388,7 @@ var player = (function(player) {
   player.isJumping = false;
 
   // spritesheets
-  player.sheet     = new SpriteSheet('imgs/character.png', player.width, player.height);
+  player.sheet     = new SpriteSheet('assets/character.png', player.width, player.height);
   player.walkAnim  = new Animation(player.sheet, 4, 0, 3);
   player.jumpAnim  = new Animation(player.sheet, 4, 3, 3);
   player.fallAnim  = new Animation(player.sheet, 4, 5, 5);
@@ -486,7 +486,7 @@ function Sprite(x, y, type) {
   this.draw = function() {
     ctx.save();
     ctx.translate(0.5,0.5);
-    ctx.drawImage(assetLoader.imgs[this.type], this.x, this.y);
+    ctx.drawImage(assetLoader.assets[this.type], this.x, this.y);
     ctx.restore();
   };
 }
