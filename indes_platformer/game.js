@@ -57,11 +57,12 @@ var assetLoader = (function() {
     'sky'           : 'assets/sky.png',
     'backdrop'      : 'assets/bg2.png',
     'backdrop2'     : 'assets/bg.png',
-    'grass'         : 'assets/grass.png',
+    //'grass'         : 'assets/grass.png',
+    'grass'         : 'assets/gr.png',
     'avatar_normal' : 'assets/character.png',
     'water'         : 'assets/water.png',
-    'grass1'        : 'assets/grassMid1.png',
-    'grass2'        : 'assets/grassMid2.png',
+    'grass1'        : 'assets/stoneMid1.png',
+    'grass2'        : 'assets/stoneMid1.png',
     'bridge'        : 'assets/bridge.png',
     'plant'         : 'assets/plant.png',
     'bush1'         : 'assets/bush1.png',
@@ -820,7 +821,7 @@ function startGame() {
   platformHeight = 2;
   platformLength = 15;
   gapLength = 0;
-
+  $('#record').hide();
   ctx.font = '16px arial, sans-serif';
 
   for (var i = 0; i < 30; i++) {
@@ -857,10 +858,12 @@ function gameOver() {
       localStorage.setItem('topScore',score);
      // localStorage.setItem('topScore',0);
       console.log('new Record !');
+      $('#record').show();
     }
    // localStorage.setItem('topScore',0);
     console.log('score saved !');
   }
+  
   $('#topScore').html(localStorage.getItem('topScore'));
   $('#game-over').show(); //ao terminar o jogo, mostra a div de game over
   assetLoader.sounds.bg.pause();

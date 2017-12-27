@@ -168,3 +168,8 @@ a {
 #topScoreTxt {
   color: yellow;
 }
+
+#record {
+  display: none;
+  color: red;
+}
