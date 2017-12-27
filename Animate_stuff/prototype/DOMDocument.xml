@@ -1,0 +1,121 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" backgroundColor="#AAAAAA" width="1280" height="720" currentTimeline="1" xflVersion="2.8" creatorInfo="Adobe Animate CC" platform="Macintosh" versionInfo="Saved by Animate Macintosh 16.0 build 119" majorVersion="16" buildNumber="119" guidesSnapTo="false" bitmapSnap="false" snapAlign="false" objectsSnapTo="false" viewAngle3D="100.925968316201" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" filetypeGUID="3CE50BB6-55CF-47A6-B591-01286DDDC64C">
+     <media>
+          <DOMBitmapItem name="8-Bit-Backgrounds-HD-1.png" itemID="5a4133df-000002df" sourceLastImported="1514222308" sourcePlatform="macintosh" externalFileSize="462571" allowSmoothing="true" originalCompressionType="lossless" quality="50" href="8-Bit-Backgrounds-HD-1.png" bitmapDataHRef="M 1 1514222534.dat" frameRight="38400" frameBottom="21600"/>
+          <DOMBitmapItem name="8-Bit-Backgrounds-HD-2.jpg" itemID="5a413c8d-000002c2" sourceLastImported="1514222342" sourcePlatform="macintosh" externalFileSize="508898" allowSmoothing="true" quality="50" href="8-Bit-Backgrounds-HD-2.jpg" bitmapDataHRef="M 3 1514224346.dat" frameRight="38400" frameBottom="24000" isJPEG="true"/>
+     </media>
+     <symbols>
+          <Include href="Background.xml" itemID="5a412b85-000002c4" lastModified="1514222543"/>
+          <Include href="Background_n.xml" loadImmediate="false" itemID="5a413b12-000002bd" lastModified="1514224403"/>
+          <Include href="Player1.xml" itemID="5a36e311-000002b5" lastModified="1513547181"/>
+          <Include href="Player2.xml" itemID="5a36e33a-000002bc" lastModified="1513547184"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Actions" color="#9933CC" locked="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Framescript language="JavaScript">
+                                        <script><![CDATA[var c, w, h, p1, p2;
+
+function init() {
+    c = createjs;
+    w = stage.canvas.clientWidth; //change for retina display
+    h = stage.canvas.clientHeight; //change for retina display
+
+    buildBackground();
+	placePlayer();
+    game = new c.Container();
+    stage.addChild(game);
+
+    //c.Ticker.on("tick", gameLoop);
+}
+
+function gameLoop(e) {
+
+}
+
+function buildBackground() {
+    backGround = new c.Container();
+    var b = new lib.Background();
+    backGround.addChild(b);
+    stage.addChild(backGround);
+	b.x = 0;
+	b.y = 0;
+}
+
+function placePlayer() {
+	p1 = new lib.P1();
+	p1.x = 720;
+	p1.y = 550;
+	stage.addChild(p1);
+}
+
+function handleMovement() {
+	window.addEventListener("keydown", function() {
+		p1.x += 0.1;
+	});
+}
+
+init();]]></script>
+                                   </Framescript>
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Sketch" color="#4F80FF" current="true" isSelected="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="Background">
+                                             <transformationPoint>
+                                                  <Point x="640" y="360"/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMSymbolInstance libraryItemName="Player1">
+                                             <matrix>
+                                                  <Matrix tx="861.65" ty="376.9"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                        <DOMShape isDrawingObject="true">
+                                             <matrix>
+                                                  <Matrix a="1.7880859375" d="-0.204971313476562" tx="-1008" ty="664.2"/>
+                                             </matrix>
+                                             <fills>
+                                                  <FillStyle index="1">
+                                                       <SolidColor color="#660000"/>
+                                                  </FillStyle>
+                                             </fills>
+                                             <strokes>
+                                                  <StrokeStyle index="1">
+                                                       <SolidStroke scaleMode="normal">
+                                                            <fill>
+                                                                 <SolidColor/>
+                                                            </fill>
+                                                       </SolidStroke>
+                                                  </StrokeStyle>
+                                             </strokes>
+                                             <edges>
+                                                  <Edge fillStyle1="1" strokeStyle="1" edges="!12209 9413|22966 9413!22966 9413|22966 10758!22966 10758|12209 10758!12209 10758|12209 9413"/>
+                                                  <Edge cubics="!22966 9413(;22966,9413 22966,10758 22966,10758q22966 9413 22966 10758);"/>
+                                                  <Edge cubics="!12209 10758(;12209,10758 12209,9413 12209,9413q12209 10758 12209 9413);"/>
+                                                  <Edge cubics="!12209 9413(;12209,9413 22966,9413 22966,9413q12209 9413 22966 9413);"/>
+                                                  <Edge cubics="!22966 10758(;22966,10758 12209,10758 12209,10758q22966 10758 12209 10758);"/>
+                                             </edges>
+                                        </DOMShape>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <persistentData>
+          <PD n="CreateJSToolkit_timelinedata" v="version&#xA;0.1&#xA;loop&#xA;true"/>
+     </persistentData>
+     <PrinterSettings platform="macintosh"/>
+     <publishHistory/>
+</DOMDocument>
