@@ -13,10 +13,12 @@ var platformSpacer = 64;
 
 var canUseLocalStorage = 'localStorage' in window && window.localStorage !== null;
 var playSound;
+var topScore;
 
 // set the sound preference
 if (canUseLocalStorage) {
-  playSound = (localStorage.getItem('kandi.playSound') === "true")
+  playSound = (localStorage.getItem('playSound') === "true")
+  //topScore = (localStorage.getItem('topScore') = 0);
 
   if (playSound) {
     $('.sound').addClass('sound-on').removeClass('sound-off');
@@ -53,8 +55,8 @@ var assetLoader = (function() {
   this.assets        = {
     'bg'            : 'assets/background.jpg',
     'sky'           : 'assets/sky.png',
-    'backdrop'      : 'assets/backdrop.png',
-    'backdrop2'     : 'assets/backdrop_ground.png',
+    'backdrop'      : 'assets/bg2.png',
+    'backdrop2'     : 'assets/bg.png',
     'grass'         : 'assets/grass.png',
     'avatar_normal' : 'assets/character.png',
     'water'         : 'assets/water.png',
@@ -67,7 +69,7 @@ var assetLoader = (function() {
     'cliff'         : 'assets/grassCliffRight.png',
     'spikes'        : 'assets/spikes.png',
     'box'           : 'assets/boxCoin.png',
-    'slime'         : 'assets/slime.png'
+    'slime'         : 'assets/bad.png'
   };
 
   // sounds dictionary
@@ -485,7 +487,7 @@ function Sprite(x, y, type) {
    */
   this.draw = function() {
     ctx.save();
-    ctx.translate(0.5,0.5);
+    ctx.translate(0,0);
     ctx.drawImage(assetLoader.assets[this.type], this.x, this.y);
     ctx.restore();
   };
@@ -591,7 +593,7 @@ function updateEnemies() {
     enemies[i].update();
     enemies[i].draw();
 
-    // player ran into enemy
+    // game over se jogador tocar em inimigo
     if (player.minDist(enemies[i]) <= player.width - platformWidth/2) {
       gameOver();
     }
@@ -610,7 +612,7 @@ function updatePlayer() {
   player.update();
   player.draw();
 
-  // game over
+  // game over se jogador sair do canvas
   if (player.y + player.height >= canvas.height) {
     gameOver();
   }
@@ -682,7 +684,7 @@ function spawnEnvironmentSprites() {
 }
 
 /**
- * Spawn new enemy sprites off screen
+ * Spawn new enemy sprites off screen  --*
  */
 function spawnEnemySprites() {
   if (score > 100 && Math.random() > 0.96 && enemies.length < 3 && platformLength > 5 &&
@@ -713,7 +715,7 @@ function animate() {
     updateGround();
     updateEnemies();
 
-    // draw the score
+    // draw the score --*
     ctx.fillText('Score: ' + score + 'm', canvas.width - 140, 30);
 
     // spawn a new Sprite
@@ -845,7 +847,22 @@ function startGame() {
 function gameOver() {
   stop = true;
   $('#score').html(score);
-  $('#game-over').show();
+  // --*
+  if (canUseLocalStorage) {
+    console.log('score = '+score);
+    topscore = localStorage.getItem('topScore');
+
+    if (score>topscore)
+    {
+      localStorage.setItem('topScore',score);
+     // localStorage.setItem('topScore',0);
+      console.log('new Record !');
+    }
+   // localStorage.setItem('topScore',0);
+    console.log('score saved !');
+  }
+  $('#topScore').html(localStorage.getItem('topScore'));
+  $('#game-over').show(); //ao terminar o jogo, mostra a div de game over
   assetLoader.sounds.bg.pause();
   assetLoader.sounds.gameOver.currentTime = 0;
   assetLoader.sounds.gameOver.play();
@@ -877,8 +894,10 @@ $('.sound').click(function() {
     playSound = true;
   }
 
+  //LOCAL STORAGE - guardar as definiçoes de utilizador, para som e score
   if (canUseLocalStorage) {
-    localStorage.setItem('kandi.playSound', playSound);
+    localStorage.setItem('playSound', playSound);
+ //   localStorage.setItem('topScore',topScore);
   }
 
   // mute or unmute all sounds

@@ -160,3 +160,11 @@ a {
   height: 360px;
   position: absolute;
 }
+
+#scoreTxt {
+  color: white;
+}
+
+#topScoreTxt {
+  color: yellow;
+}
