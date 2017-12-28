@@ -777,7 +777,13 @@ document.onkeyup = function(e) {
 };
 
 hammertime.on('tap', function (ev) {
-  KEY_STATUS = { space: true }
+ // KEY_STATUS = { space: true }
+ console.log(ev);
+
+ player.isJumping = true;
+ player.dy = player.jumpDy;
+ jumpCounter = 12;
+ assetLoader.sounds.jump.play();
 });
 
 /**
