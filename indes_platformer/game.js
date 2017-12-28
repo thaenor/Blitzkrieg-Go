@@ -76,7 +76,7 @@ var assetLoader = (function() {
   // sounds dictionary
   this.sounds      = {
     'bg'            : 'sounds/Blitzkreig_Bop.mp3',
-    'jump'          : 'sounds/jump.mp3',
+    'jump'          : 'sounds/jump.wav',
     'gameOver'      : 'sounds/gameOver2.mp3'
   };
 
