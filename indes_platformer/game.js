@@ -4,6 +4,7 @@ var canvas = document.getElementById('canvas1');
 var ctx = canvas.getContext('2d');
 var player, score, stop, ticker;
 var ground = [], water = [], enemies = [], environment = [];
+var hammertime = new Hammer(document);
 
 // platform variables
 var platformHeight, platformLength, gapLength;
@@ -774,6 +775,10 @@ document.onkeyup = function(e) {
     KEY_STATUS[KEY_CODES[keyCode]] = false;
   }
 };
+
+hammertime.on('tap', function (ev) {
+  KEY_STATUS = { space: true }
+});
 
 /**
  * Request Animation Polyfill
