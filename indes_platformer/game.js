@@ -1,5 +1,5 @@
 (function ($) {
-// define variables
+
 var canvas = document.getElementById('canvas1');
 var ctx = canvas.getContext('2d');
 var player, score, stop, ticker;
@@ -19,7 +19,7 @@ var topScore;
 // set the sound preference
 if (canUseLocalStorage) {
   playSound = (localStorage.getItem('playSound') === "true")
-  //topScore = (localStorage.getItem('topScore') = 0);
+  
 
   if (playSound) {
     $('.sound').addClass('sound-on').removeClass('sound-off');
@@ -58,12 +58,11 @@ var assetLoader = (function() {
     'sky'           : 'assets/sky.png',
     'backdrop'      : 'assets/bg2.png',
     'backdrop2'     : 'assets/bg.png',
-    //'grass'         : 'assets/grass.png',
-    'grass'         : 'assets/gr.png',
+    'ground'         : 'assets/gr.png',
     'avatar_normal' : 'assets/character.png',
     'water'         : 'assets/water.png',
-    'grass1'        : 'assets/stoneMid1.png',
-    'grass2'        : 'assets/stoneMid1.png',
+    'stone1'        : 'assets/stoneMid1.png',
+    'stone2'        : 'assets/stoneMid1.png',
     'bridge'        : 'assets/bridge.png',
     'plant'         : 'assets/plant.png',
     'bush1'         : 'assets/bush1.png',
@@ -71,7 +70,7 @@ var assetLoader = (function() {
     'cliff'         : 'assets/grassCliffRight.png',
     'spikes'        : 'assets/spikes.png',
     'box'           : 'assets/boxCoin.png',
-    'slime'         : 'assets/bad.png'
+    'badguy'         : 'assets/bad.png'
   };
 
   // sounds dictionary
@@ -505,10 +504,10 @@ function getType() {
   switch (platformHeight) {
     case 0:
     case 1:
-      type = Math.random() > 0.5 ? 'grass1' : 'grass2';
+      type = Math.random() > 0.5 ? 'stone1' : 'stone2';
       break;
     case 2:
-      type = 'grass';
+      type = 'ground';
       break;
     case 3:
       type = 'bridge';
@@ -620,9 +619,9 @@ function updatePlayer() {
   }
 }
 
-/**
- * Spawn new sprites off screen
- */
+
+ //Spawn new sprites off screen
+
 function spawnSprites() {
   // increase score
   score++;
@@ -658,9 +657,9 @@ function spawnSprites() {
   }
 }
 
-/**
- * Spawn new environment sprites off screen
- */
+
+// Spawn new environment sprites off screen
+
 function spawnEnvironmentSprites() {
   if (score > 40 && rand(0, 20) === 0 && platformHeight < 3) {
     if (Math.random() > 0.5) {
@@ -685,9 +684,8 @@ function spawnEnvironmentSprites() {
   }
 }
 
-/**
- * Spawn new enemy sprites off screen  --*
- */
+
+// Spawn new enemy sprites off screen 
 function spawnEnemySprites() {
   if (score > 100 && Math.random() > 0.96 && enemies.length < 3 && platformLength > 5 &&
       (enemies.length ? canvas.width - enemies[enemies.length-1].x >= platformWidth * 3 ||
@@ -695,14 +693,13 @@ function spawnEnemySprites() {
     enemies.push(new Sprite(
       canvas.width + platformWidth % player.speed,
       platformBase - platformHeight * platformSpacer - platformWidth,
-      Math.random() > 0.5 ? 'spikes' : 'slime'
+      Math.random() > 0.5 ? 'spikes' : 'badguy'
     ));
   }
 }
 
-/**
- * Game loop
- */
+
+// Game loop
 function animate() {
   if (!stop) {
     requestAnimFrame( animate );
@@ -717,7 +714,7 @@ function animate() {
     updateGround();
     updateEnemies();
 
-    // draw the score --*
+    // draw the score 
     ctx.fillText('Score: ' + score + 'm', canvas.width - 140, 30);
 
     // spawn a new Sprite
@@ -777,8 +774,8 @@ document.onkeyup = function(e) {
 };
 
 hammertime.on('tap', function (ev) {
- // KEY_STATUS = { space: true }
- console.log(ev);
+
+ //console.log(ev);
 
  player.isJumping = true;
  player.dy = player.jumpDy;
@@ -836,7 +833,7 @@ function startGame() {
   ctx.font = '16px arial, sans-serif';
 
   for (var i = 0; i < 30; i++) {
-    ground.push(new Sprite(i * (platformWidth-3), platformBase - platformHeight * platformSpacer, 'grass'));
+    ground.push(new Sprite(i * (platformWidth-3), platformBase - platformHeight * platformSpacer, 'ground'));
   }
 
   for (i = 0; i < canvas.width / 32 + 2; i++) {
@@ -859,7 +856,8 @@ function startGame() {
 function gameOver() {
   stop = true;
   $('#score').html(score);
-  // --*
+
+  
   if (canUseLocalStorage) {
     console.log('score = '+score);
     topscore = localStorage.getItem('topScore');
@@ -867,16 +865,16 @@ function gameOver() {
     if (score>topscore)
     {
       localStorage.setItem('topScore',score);
-     // localStorage.setItem('topScore',0);
+ 
       console.log('new Record !');
       $('#record').show();
     }
-   // localStorage.setItem('topScore',0);
+
     console.log('score saved !');
   }
   
   $('#topScore').html(localStorage.getItem('topScore'));
-  $('#game-over').show(); //ao terminar o jogo, mostra a div de game over
+  $('#game-over').show(); //when game finishes, shows game-over div
   assetLoader.sounds.bg.pause();
   assetLoader.sounds.gameOver.currentTime = 0;
   assetLoader.sounds.gameOver.play();
@@ -897,6 +895,7 @@ $('.back').click(function() {
 });
 $('.sound').click(function() {
   var $this = $(this);
+
   // sound off
   if ($this.hasClass('sound-on')) {
     $this.removeClass('sound-on').addClass('sound-off');
@@ -908,10 +907,10 @@ $('.sound').click(function() {
     playSound = true;
   }
 
-  //LOCAL STORAGE - guardar as definiçoes de utilizador, para som e score
+  //LOCAL STORAGE 
   if (canUseLocalStorage) {
     localStorage.setItem('playSound', playSound);
- //   localStorage.setItem('topScore',topScore);
+
   }
 
   // mute or unmute all sounds
