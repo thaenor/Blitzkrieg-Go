@@ -883,16 +883,12 @@ function gameOver() {
 /**
  * Click handlers for the different menu screens
  */
-$('.credits').click(function() {
-  $('#main').hide();
-  $('#credits').show();
-  $('#menu').addClass('credits');
-});
-$('.back').click(function() {
-  $('#credits').hide();
+
+$('.back').click(function() { //BACK BUTTON --------------------------------*
   $('#main').show();
-  $('#menu').removeClass('credits');
+  $('#menu').show();
 });
+
 $('.sound').click(function() {
   var $this = $(this);
 

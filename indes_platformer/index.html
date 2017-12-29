@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <!-- previne o zoom automatico da janela, ao tocar 2x (smartphones) -->
+  <!-- prevents auto-zoom when double tap (on smartphones) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>INDES PLATFORM GAME</title>
   <link rel="stylesheet" href="indes.css" type="text/css" media="screen">
@@ -17,18 +17,11 @@
         <progress id="progress-bar" value="0"></progress>
       </div>
       <div id="main">
-        <h1>INDES PLATFORM GAME</h1>
+        <h3>On PC: Press 'Spacebar' to jump</h3>
+        <h3>On phone: Tap repeatedly to jump</h3>
         <ul>
-          <li><a href="javascript:void(0)" class="button play">Start Game</a></li>
-          <li><a href="javascript:void(0)" class="button credits">Credits</a></li>
+          <li><a href="javascript:void(0)" class="button play">PLAY</a></li>
         </ul>
-      </div>
-      <div id="credits">
-        <ul>
-          <li>1231421 - Chuck Norris</li>
-          <li>2514125 - Chuck Norris</li>
-        </ul>
-        <a href="javascript:void(0)" class="button back">Back</a>
       </div>
     </div>
     <canvas id="canvas1" width="800" height="480">
@@ -40,6 +33,7 @@
       <h2 id='scoreTxt'>You ran <span id="score"></span> meters!</h2>
       <h2 id='topScoreTxt'>TOP SCORE: <span id="topScore"></span> meters!</h2>
       <a href="javascript:void(0)" class="button restart">Try again?</a>
+      <a href="javascript:void(0)" class="button back">Back to Menu</a>
     </div>
   </div>
   <script type="text/javascript" src="hammer.min.js"></script>
