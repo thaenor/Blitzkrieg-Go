@@ -880,15 +880,6 @@ function gameOver() {
   assetLoader.sounds.gameOver.play();
 }
 
-/**
- * Click handlers for the different menu screens
- */
-
-$('.back').click(function() { //BACK BUTTON --------------------------------*
-  $('#main').show();
-  $('#menu').show();
-});
-
 $('.sound').click(function() {
   var $this = $(this);
 
