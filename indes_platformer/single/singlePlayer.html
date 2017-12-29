@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- prevents auto-zoom when double tap (on smartphones) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>INDES PLATFORM GAME</title>
+  <link rel="stylesheet" href="indes.css" type="text/css" media="screen">
+  <script type="text/javascript" src="jquery.2.1.1.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="sound sound-off"></div>
+    <div id="menu">
+      <div id="progress">
+        <div id="percent">Downloading:
+          <span id="p"></span>
+        </div>
+        <progress id="progress-bar" value="0"></progress>
+      </div>
+      <div id="main">
+        <h3>GET READY !</h3>
+        <h3>Press 'PLAY' to START !</h3>
+        <ul>
+          <li>
+            <a href="javascript:void(0)" class="button play">PLAY</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <canvas id="canvas1" width="800" height="480">
+      <p>Recomendamos o uso do Google Chrome.</p>
+      <p>O seu browser nao suporta este jogo.</p>
+    </canvas>
+    <div id="game-over">
+      <h2 id='record'>
+        <span id="new">NEW RECORD!</span>
+      </h2>
+      <h2 id='scoreTxt'>You ran
+        <span id="score"></span> meters!</h2>
+      <h2 id='topScoreTxt'>TOP SCORE:
+        <span id="topScore"></span> meters!</h2>
+      <a href="javascript:void(0)" class="button restart">Try again?</a>
+    <!--  <a href="javascript:void(0)" class="button back">Back to Menu</a> -->
+	~<a href="index.html" class="button back">Back to Menu</a>
+    </div>
+  </div>
+  <script type="text/javascript" src="hammer.min.js"></script>
+  <script type="text/javascript" src="game.js"></script>
+</body>
+
+</html>

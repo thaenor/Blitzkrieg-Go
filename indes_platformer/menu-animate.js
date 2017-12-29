@@ -821,7 +821,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,247.9,1506.6);
 		});
 		
 		this.SinglePlayerBtn.addEventListener("click", function() {
-			window.open('singlePlayer.html');
+			window.open('single/singlePlayer.html');
 		});
 	}
 	this.frame_34 = function() {
@@ -882,7 +882,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,247.9,1506.6);
 		})
 		
 		this.Play2PBtn.addEventListener("click", function() {
-			window.open('multiPlayer.html');
+			window.open('multi/multiplayer.html');
 		})
 	}
 
