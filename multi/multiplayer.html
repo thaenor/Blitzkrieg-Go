@@ -7,8 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-<iframe src="1/singlePlayer.html" width="600" height="300"></iframe>
+<script type="text/javascript" src="../single/jquery.2.1.1.min.js"></script>
+<script>
+    $(document).keydown(function(e){
+        $("I1").trigger('keydown', e);
+        $("I2").trigger('keydown', e);
+    });
+</script>
+<iframe id="I1" src="1/singlePlayer.html" width="620" height="320"></iframe>
     <hr/>
-<iframe src="2/singlePlayer.html" width="600" height="300"></iframe>
+<iframe id="I2" src="2/singlePlayer.html" width="620" height="320"></iframe>
 </body>
 </html>
