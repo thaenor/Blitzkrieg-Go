@@ -976,7 +976,7 @@ p.nominalBounds = new cjs.Rectangle(47.1,3.7,154.2,1480.3);
 		});
 		
 		this.Play2PBtn02.addEventListener("click", function() {
-			window.location.href = `${window.location.href}/multi/multiPlayer.html`;
+			window.location.href = `${window.location.href}multi/multiPlayer.html`;
 		});
 	}
 
