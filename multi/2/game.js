@@ -407,7 +407,7 @@ var player = (function(player) {
   player.update = function() {
 
     // jump if not currently jumping or falling
-    if (KEY_STATUS.space && player.dy === 0 && !player.isJumping) {
+    if (KEY_STATUS.m && player.dy === 0 && !player.isJumping) {
       player.isJumping = true;
       player.dy = player.jumpDy;
       jumpCounter = 12;
@@ -415,7 +415,7 @@ var player = (function(player) {
     }
 
     // jump higher if the space bar is continually pressed
-    if (KEY_STATUS.space && jumpCounter) {
+    if (KEY_STATUS.m && jumpCounter) {
       player.dy = player.jumpDy;
     }
 
