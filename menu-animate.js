@@ -982,7 +982,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{Abo
 		});
 		
 		this.Play2PBtn02.addEventListener("click", function() {
-			window.location.href = `${window.location.href}/multi/multiPlayer.html`;
+			window.location.href = `${window.location.href}multi/multiPlayer.html`;
 		});
 	}
 
