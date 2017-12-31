@@ -114,14 +114,14 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// Layer 1
-	this.BestScore = new cjs.Text("", "18px 'Helvetica'", "#CCCCCC");
-	this.BestScore.name = "BestScore";
-	this.BestScore.lineHeight = 23;
-	this.BestScore.lineWidth = 51;
-	this.BestScore.parent = this;
-	this.BestScore.setTransform(2,2);
+	this.scoreDisplay = new cjs.Text("", "18px 'Helvetica'", "#CCCCCC");
+	this.scoreDisplay.name = "scoreDisplay";
+	this.scoreDisplay.lineHeight = 23;
+	this.scoreDisplay.lineWidth = 51;
+	this.scoreDisplay.parent = this;
+	this.scoreDisplay.setTransform(2,2);
 
-	this.timeline.addTween(cjs.Tween.get(this.BestScore).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.scoreDisplay).wait(1));
 
 }).prototype = getMCSymbolPrototype(lib.TopScore, new cjs.Rectangle(0,0,54.8,24.8), null);
 
@@ -942,13 +942,15 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{Abo
 		var c = new createjs.Container();
 		c.addChild(label);
 		stage.addChild(c);
-		label.visible = false;
-		var s = localStorage.getItem('topScore');
 		
+		label.scoreDisplay.visible = false;
+		var s = localStorage.getItem('topScore');
+
 		if(s != undefined && s > 0){
-			console.log(s);
-			label.text = s;
-			label.visible = true;
+			label.x = 338.85;
+			label.y = 102.6;
+			label.scoreDisplay.text = s;
+			label.scoreDisplay.visible = true;
 		} else {
 			this.yourscore.visible = false;
 		}
